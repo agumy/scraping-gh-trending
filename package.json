@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
   "devDependencies": {
     "@types/node": "^15.0.2",
     "@types/puppeteer": "^5.4.3",
