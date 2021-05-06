@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer = require("puppeteer");
 
 const TRENDINGS = [
   "https://github.com/trending/javascript?since=daily&spoken_language_code=en",
@@ -18,6 +18,10 @@ const TRENDINGS = [
         const title = h1?.textContent?.replace(/\s+/g, "");
         const href = `https://github.com/${title}`;
 
+        const desc = element.children[
+          element.children.length - 2
+        ]?.textContent?.trim();
+
         const meta = element.children[element.children.length - 1];
         const increaseStar = Number(
           meta?.children[4]?.textContent?.trim()?.replace(" stars today", "")
@@ -25,8 +29,9 @@ const TRENDINGS = [
 
         return {
           title,
-          href,
+          desc,
           increaseStar,
+          href,
         };
       });
 
